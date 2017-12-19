@@ -4,6 +4,7 @@ var path = require('path');
 var ytdl = require('ytdl-core');
 var ytsearch = require('youtube-search');
 var ffmpeg = require('fluent-ffmpeg');
+var dotenv = require('dotenv').config();
 
 var app = express();
 
@@ -14,7 +15,8 @@ for (var i in mkdirs) {
     fs.mkdirSync(dir);
   }
 }
-
+console.log("Before dotenv");
+//console.log(process.env.PORT);
 app.set('port', (process.env.PORT || 5000));
 
 app.use(express.static(__dirname + '/public'));
