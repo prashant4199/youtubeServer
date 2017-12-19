@@ -15,8 +15,7 @@ for (var i in mkdirs) {
     fs.mkdirSync(dir);
   }
 }
-console.log("Before dotenv");
-//console.log(process.env.PORT);
+
 app.set('port', (process.env.PORT || 5000));
 
 app.use(express.static(__dirname + '/public'));
