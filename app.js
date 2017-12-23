@@ -32,6 +32,7 @@ app.get('/', function(request, response) {
 var cache = {};
 
 app.get('/alexa-search/:query', function(req, res) {
+  console.log("Get Request received");
   var query = new Buffer(req.params.query, 'base64').toString();
   var lang = req.query.language || 'en';
   if (lang !== 'en' || lang !== 'de') {
@@ -98,6 +99,7 @@ app.get('/alexa-search/:query', function(req, res) {
 });
 
 app.get('/alexa-check/:id', function(req, res) {
+  console.log("Get Request received for download");
   var id = req.params.id;
   if (id in cache) {
     if (cache[id]['downloaded']) {
@@ -127,6 +129,7 @@ app.get('/alexa-check/:id', function(req, res) {
 //////////////////////////// NON-ALEXA ROUTES ////////////////////////////
 
 function fetch_target_id(req, res) {
+  console.log("Get Request received from id"+req.params.id);
   var id = req.params.id;
   var old_url = 'https://www.youtube.com/watch?v=' + id;
   ytdl.getInfo(old_url, function(err, info) {
